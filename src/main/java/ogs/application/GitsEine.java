@@ -1,15 +1,20 @@
 package ogs.application;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GitsEine {
 
     public int luck;
-    public String[] schnupfs;
+    public List<String> schnupfs;
     
     public GitsEine() {
         this.luck = 0;
-        this.schnupfs = new String[] { "McCrystal","Helvetica" };
+        this.schnupfs = readSchnupfs();
     }
     
     public boolean run(String mod) {
@@ -26,7 +31,7 @@ public class GitsEine {
         } else {
             switch (mods[1]) {
                 case "all":
-                    String schnupf = schnupfs[new Random().nextInt(schnupfs.length)];
+                    String schnupf = schnupfs.get(new Random().nextInt(schnupfs.size()));
                     if (gitsEine()) {
                         System.out.println("Ja sicher, en " + schnupf);
                     } else {
@@ -76,4 +81,21 @@ public class GitsEine {
         return new Random().nextInt(2 + luck) <= luck;
     }
 
+    private ArrayList<String> readSchnupfs() {
+        ArrayList<String> list = new ArrayList<String>();
+        String line = "";
+        BufferedReader br;
+        try {
+            br = new BufferedReader(new FileReader("resources/schnupf.txt"));
+            while ((line = br.readLine()) != null) {
+                list.add(line);
+            }
+            br.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        
+        return list;
+    }
+    
 }
