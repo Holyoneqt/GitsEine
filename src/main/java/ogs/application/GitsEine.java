@@ -26,6 +26,21 @@ public class GitsEine {
                 this.luck++;
                 System.out.println("Luck increased by 1");
             }
+        } else if(mods[0].equals("dec")) {
+            if(mods.length > 1) {
+                try {
+                    this.luck -= Integer.parseInt(mods[1]);                    
+                    System.out.println("Luck decreased by " + Integer.parseInt(mods[1]));
+                } catch(Exception e) {
+                    System.out.println("Bitte gültige Nummer eingeben");
+                } 
+            } else {     
+                this.luck--;
+                System.out.println("Luck decreased by 1");
+            }
+            if(this.luck < 0) {
+                this.luck = 0;
+            }
         }
     }
     
