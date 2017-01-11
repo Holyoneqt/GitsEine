@@ -12,6 +12,34 @@ public class GitsEine {
         this.schnupfs = new String[] { "McCrystal","Helvetica" };
     }
     
+    public boolean run(String mod) {
+        String[] mods = mod.split(" ");
+        Main.clearConsole();
+        System.out.println("Gits eine?");
+        if(mods.length <= 1) {
+            if (gitsEine()) {
+                System.out.println("Ja sicher!");
+            } else {
+                System.out.println("Nope sorry :(");
+            }
+            return true;            
+        } else {
+            switch (mods[1]) {
+                case "all":
+                    String schnupf = schnupfs[new Random().nextInt(schnupfs.length)];
+                    if (gitsEine()) {
+                        System.out.println("Ja sicher, en " + schnupf);
+                    } else {
+                        System.out.println("Nope sorry :(");
+                    }
+                    return true;
+                default:
+                    Main.clearConsole();
+                    return false;
+            }
+        }
+    }
+    
     public void modifyLuck(String mod) {
         String[] mods = mod.split(" ");
         if(mods[0].equals("inc")) {

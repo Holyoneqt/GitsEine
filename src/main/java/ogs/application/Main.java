@@ -19,22 +19,12 @@ public class Main {
         while (!run) {
             String eingabe = br.readLine();
 
-            if (eingabe.equals("run")) {
-                run = true;
+            if (eingabe.startsWith("run")) {
+                run = gitsEine.run(eingabe);
             } else if (eingabe.startsWith("luck ")) {
                 gitsEine.modifyLuck(eingabe.substring(5));
             }
         }
-
-        clearConsole();
-        System.out.println("Gits eine?");
-
-        if (gitsEine.gitsEine()) {
-            System.out.println("Ja sicher!");
-        } else {
-            System.out.println("Nope sorry :(");
-        }
-
     }
 
     public static void clearConsole() {
