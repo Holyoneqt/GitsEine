@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    public static final String VERSION = "v2.0";
+    public static final String VERSION = "v2.1";
     
     public static void main(String[] args) throws IOException {
 
@@ -23,6 +23,8 @@ public class Main {
                 run = gitsEine.run(eingabe);
             } else if (eingabe.startsWith("luck ")) {
                 gitsEine.modifyLuck(eingabe.substring(5));
+            } else if(eingabe.equals("69")) {
+                doTheDance();
             }
         }
     }
@@ -37,4 +39,27 @@ public class Main {
         }
     }
 
+    private static void doTheDance() {
+        clearConsole();
+        String danceLeft = "\\(*_*)\n" + 
+                           " (  (>\n" + 
+                           " /  \\";
+        String danceRight = " (*_*)/\n" + 
+                            "<)  )\n" +
+                            "/  \\";
+        for(int i = 0; i < 20; i++) {
+            if((i%2) == 0) {
+                System.out.println(danceLeft);
+            } else {
+                System.out.println(danceRight);
+            }
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clearConsole();
+        }
+    }
+    
 }
